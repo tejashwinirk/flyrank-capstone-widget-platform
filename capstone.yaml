@@ -1,0 +1,43 @@
+project:
+  name: FlyRank Lead Capture Platform
+  version: 1.0.0
+  author: Tejashwini R.K.
+
+stack:
+  language: Python
+  framework: FastAPI
+  database: PostgreSQL
+  authentication: JWT
+  password_hashing: Argon2
+  rate_limiting: SlowAPI
+  http_client: HTTPX
+
+features:
+  authentication: true
+  tenant_isolation: true
+  widget_crud: true
+  widget_versioning: true
+  embed_snippet: true
+  public_widget_delivery: true
+  cross_origin_submission: true
+  request_validation: true
+  request_size_limit: true
+  rate_limiting: true
+  honeypot: true
+  idempotency: true
+  geo_provider_fallback: true
+  background_jobs: true
+  notification_retries: true
+  dashboard: true
+  analytics: true
+  database_migrations: true
+
+run:
+  command: python -m uvicorn app.main:app --port 8001
+
+health:
+  endpoint: /health
+
+documentation:
+  swagger: /docs
+  test_page: docs/test-widget.html

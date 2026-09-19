@@ -40,3 +40,15 @@ def create_widget(
         connection.commit()
 
     return row
+
+def get_tenant_by_email(email: str):
+    query = """
+        SELECT id, name, owner_email, password_hash, created_at
+        FROM tenants
+        WHERE owner_email = %s;
+    """
+
+    with get_connection() as connection:
+        with connection.cursor() as cursor:
+            cursor.execute(query, (email,))
+            return cursor.fetchone()
